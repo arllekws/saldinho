@@ -1,4 +1,4 @@
-# SALDINHO
+#  🪙 SALDINHO
 
 ## 📌 Sobre o Projeto
 O **SALDINHO** é uma aplicação orientada a objetos desenvolvida em Java, com arquitetura em camadas e persistência de dados. O objetivo é ajudar usuários a gerenciar suas finanças pessoais, registrando despesas, receitas e orçamentos de maneira intuitiva e automatizada.
