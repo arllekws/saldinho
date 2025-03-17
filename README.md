@@ -13,3 +13,6 @@ O **SALDINHO** é uma aplicação orientada a objetos desenvolvida em Java, com 
 - **Linguagem:** Java
 - **Banco de Dados:** MySQL / PostgreSQL (ou outro mecanismo de persistência)
 
+## Figma:
+
+https://www.figma.com/design/S2nexLjDArVPBLbnaEkfMb/Saldinho?node-id=0-1&t=28LOjQ4yPbfMhKya-1
