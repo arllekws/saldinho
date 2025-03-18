@@ -25,3 +25,8 @@ https://www.figma.com/design/S2nexLjDArVPBLbnaEkfMb/Saldinho?node-id=0-1&t=28LOj
 ## Trello:
 
 https://trello.com/b/BCjL56lp/saldinho-poo
+
+## WireFrame de Baixa Fidelidade:
+
+
+https://github.com/user-attachments/assets/96ba5326-635c-4a22-a5bb-572c0b3c92be
