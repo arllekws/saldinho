@@ -8,8 +8,6 @@ public class Main {
     public static void main(String[] args) {
         userService userService = new userService();
 
-        userService.registerUser("admin", "administrador", "administrador");
-        userService.login("admin", "admin");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
