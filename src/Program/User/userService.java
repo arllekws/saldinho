@@ -4,7 +4,7 @@ import Entities.User;
 
 import java.util.HashMap;
 
-public class UserService {
+public class userService {
     private final HashMap<String, User> users = new HashMap<>();
 
     public void registerUser(String name, String email, String password) {

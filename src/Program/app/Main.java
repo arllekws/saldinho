@@ -1,12 +1,15 @@
 package Program.app;
 
-import Program.User.UserService;
+import Program.User.userService;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        UserService userService = new UserService();
+        userService userService = new userService();
+
+        userService.registerUser("admin", "administrador", "administrador");
+        userService.login("admin", "admin");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -16,7 +19,7 @@ public class Main {
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             int option = scanner.nextInt();
-            scanner.nextLine(); // limpar buffer
+            scanner.nextLine();
 
             if (option == 1) {
                 System.out.print("Nome: ");
