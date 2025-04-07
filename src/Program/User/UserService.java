@@ -4,7 +4,7 @@ import Entities.User;
 
 import java.util.HashMap;
 
-public class userService {
+public class UserService {
     private final HashMap<String, User> users = new HashMap<>();
 
     public void registerUser(String name, String email, String password) {
@@ -23,18 +23,21 @@ public class userService {
         System.out.println("Conta criada com sucesso para: " + name);
     }
 
-    public void login(String email, String password) {
+    public User login(String email, String password) {
         if (!users.containsKey(email)) {
             System.out.println("Erro: E-mail não encontrado.");
-            return;
+            return null;
         }
 
         User user = users.get(email);
         if (!user.getPassword().equals(password)) {
             System.out.println("Erro: Senha incorreta.");
-            return;
+            return user;
         }
 
         System.out.println("Login realizado com sucesso! Bem-vindo, " + user.getName());
+        return user;
     }
 }
+
+
