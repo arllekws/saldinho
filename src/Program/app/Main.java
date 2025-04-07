@@ -36,7 +36,9 @@ public class Main {
                     String loginSenha = scanner.nextLine().trim();
                     User usuarioLogado = userService.login(loginEmail, loginSenha);
 
+
                     if (usuarioLogado != null) {
+                        clearScreen();
                         ExpenseService expenseService = new ExpenseService();
                         boolean logado = true;
 
@@ -81,5 +83,11 @@ public class Main {
             }
         }
     }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }
+
 
