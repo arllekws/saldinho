@@ -43,3 +43,6 @@ https://miro.com/app/board/uXjVIGd3n2U=/?share_link_id=781119355264
 Print: ![image](https://github.com/user-attachments/assets/42178d9f-8e2b-45ee-acb3-a7759b50ad3f)
 
 ## Screencast
+https://github.com/user-attachments/assets/9bd3571e-9734-4a9c-9494-85d2e07847b6
+
+Youtube: https://youtu.be/gUUQWwnKaOk
