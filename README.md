@@ -32,3 +32,14 @@ https://trello.com/b/BCjL56lp/saldinho-poo
 https://github.com/user-attachments/assets/96ba5326-635c-4a22-a5bb-572c0b3c92be
 
 <h3>Link Youtube: (Com legenda) </h3> https://youtu.be/vVsdVC9SJyE
+
+## Issue/ Bug tracker
+![image](https://github.com/user-attachments/assets/32f6e0ca-b6bd-42c9-b80e-fde55022c2cb)
+
+## Diagrama de Classes (UML)
+
+https://miro.com/app/board/uXjVIGd3n2U=/?share_link_id=781119355264
+
+Print: ![image](https://github.com/user-attachments/assets/42178d9f-8e2b-45ee-acb3-a7759b50ad3f)
+
+## Screencast
