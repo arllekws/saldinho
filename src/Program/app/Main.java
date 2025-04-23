@@ -3,6 +3,10 @@ package Program.app;
 import Entities.User;
 import Program.User.UserService;
 import Program.Expense.ExpenseService;
+import Program.Goal.GoalService;
+import Entities.FinancialGoal;
+import java.time.LocalDate;
+
 
 import java.util.Scanner;
 
@@ -40,6 +44,7 @@ public class Main {
                     if (usuarioLogado != null) {
                         clearScreen();
                         ExpenseService expenseService = new ExpenseService();
+                        GoalService goalService = new GoalService();
                         boolean logado = true;
 
                         while (logado) {
@@ -47,6 +52,7 @@ public class Main {
                             System.out.println("1. Registrar Despesa");
                             System.out.println("2. Ver Despesas");
                             System.out.println("3. Apagar Todas as Despesas");
+                            System.out.println("4. Metas Financeiras");
                             System.out.println("0. Sair da Conta");
                             System.out.print("Escolha uma opção: ");
                             String escolha = scanner.nextLine();
@@ -64,6 +70,65 @@ public class Main {
                                     break;
                                 case "3":
                                     expenseService.clearExpenses();
+                                    break;
+                                case "4":
+                                    boolean gerenciarMetas = true;
+                                    while (gerenciarMetas) {
+                                        System.out.println("\n---GERENCIAR METAS---");
+                                        System.out.println("1. Criar Nova Meta");
+                                        System.out.println("2. Ver Todas as Metas");
+                                        System.out.println("3. Adicionar Economia");
+                                        System.out.println("0. Voltar");
+                                        System.out.print("Escolha uma opção: ");
+                                        String opcaoMeta = scanner.nextLine();
+
+                                        switch (opcaoMeta) {
+                                            case "1":
+                                                System.out.print("Nome da meta: ");
+                                                String nomeMeta = scanner.nextLine();
+                                                System.out.print("Valor da meta (R$): ");
+                                                double valorMeta = Double.parseDouble(scanner.nextLine());
+                                                System.out.print("Prazo em meses: ");
+                                                int prazo = Integer.parseInt(scanner.nextLine());
+                                                LocalDate fim = LocalDate.now().plusMonths(prazo);
+                                                FinancialGoal meta = new FinancialGoal(nomeMeta, valorMeta, fim);
+                                                goalService.createGoal(meta);
+                                                System.out.println("Meta criada com sucesso!");
+                                                System.out.printf("Você precisa economizar R$%.2f por mês.\n", meta.getMonthlySaving());
+                                                break;
+                                            case "2":
+                                                System.out.println("\n--- METAS CADASTRADAS ---");
+                                                for (FinancialGoal g : goalService.getAllGoals()) {
+                                                    System.out.println(g);
+                                                    System.out.printf("Progresso: %.2f%%\n", g.getProgressPercentage());
+                                                    System.out.printf("Meta mensal: R$%.2f\n", g.getMonthlySaving());
+                                                }
+                                                break;
+                                            case "3":
+                                                System.out.println("\n--- ADICIONAR ECONOMIA ---");
+                                                int i = 1;
+                                                for (FinancialGoal g : goalService.getAllGoals()) {
+                                                    System.out.println(i + ". " + g);
+                                                    i++;
+                                                }
+                                                if (i == 1) {
+                                                    System.out.println("Nenhuma meta criada.");
+                                                    break;
+                                                }
+                                                System.out.print("Escolha a meta (número): ");
+                                                int escolhaMeta = Integer.parseInt(scanner.nextLine()) - 1;
+                                                System.out.print("Valor economizado (R$): ");
+                                                double valorEco = Double.parseDouble(scanner.nextLine());
+                                                goalService.getAllGoals().get(escolhaMeta).addSavings(valorEco);
+                                                System.out.println("Valor adicionado com sucesso!");
+                                                break;
+                                            case "0":
+                                                gerenciarMetas = false;
+                                                break;
+                                            default:
+                                                System.out.println("Opção inválida.");
+                                        }
+                                    }
                                     break;
                                 case "0":
                                     logado = false;
