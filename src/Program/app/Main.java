@@ -9,8 +9,7 @@ import java.time.LocalDate;
 import Entities.Recipe;
 import Program.Recipe.RecipeService;
 import java.time.Month;
-
-
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -167,10 +166,25 @@ public class Main {
                                                 }
                                                 break;
                                             case "3":
-                                                System.out.print("Digite o mês (ex: JANUARY, FEBRUARY...): ");
-                                                Month mes = Month.valueOf(scanner.nextLine().toUpperCase());
-                                                for (Recipe r : recipeService.getRecipesByMonth(mes)) {
-                                                    System.out.println(r);
+                                                System.out.print("Digite o número do mês (1-12): ");
+                                                int monthNumber = Integer.parseInt(scanner.nextLine());
+
+                                                if (monthNumber < 1 || monthNumber > 12) {
+                                                    System.out.println("Número de mês inválido. Digite um número entre 1 e 12.");
+                                                    break;
+                                                }
+
+                                                Month selectedMonth = Month.of(monthNumber);
+
+                                                List<Recipe> recipesOfTheMonth = recipeService.getRecipesByMonth(selectedMonth);
+
+                                                if (recipesOfTheMonth.isEmpty()) {
+                                                    System.out.println("Nenhuma receita encontrada para este mês.");
+                                                } else {
+                                                    System.out.println("Receitas encontradas:");
+                                                    for (Recipe recipe : recipesOfTheMonth) {
+                                                        System.out.println(recipe);
+                                                    }
                                                 }
                                                 break;
                                             case "4":
