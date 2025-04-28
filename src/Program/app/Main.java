@@ -6,6 +6,9 @@ import Program.Expense.ExpenseService;
 import Program.Goal.GoalService;
 import Entities.FinancialGoal;
 import java.time.LocalDate;
+import Entities.Recipe;
+import Program.Recipe.RecipeService;
+import java.time.Month;
 
 
 import java.util.Scanner;
@@ -45,6 +48,7 @@ public class Main {
                         clearScreen();
                         ExpenseService expenseService = new ExpenseService();
                         GoalService goalService = new GoalService();
+                        RecipeService recipeService = new RecipeService();
                         boolean logado = true;
 
                         while (logado) {
@@ -53,6 +57,7 @@ public class Main {
                             System.out.println("2. Ver Despesas");
                             System.out.println("3. Apagar Todas as Despesas");
                             System.out.println("4. Metas Financeiras");
+                            System.out.println("5. Visualizar Investimentos");
                             System.out.println("0. Sair da Conta");
                             System.out.print("Escolha uma opção: ");
                             String escolha = scanner.nextLine();
@@ -124,6 +129,59 @@ public class Main {
                                                 break;
                                             case "0":
                                                 gerenciarMetas = false;
+                                                break;
+                                            default:
+                                                System.out.println("Opção inválida.");
+                                        }
+                                    }
+                                    break;
+                                case "5":
+                                    boolean gerenciarReceitas = true;
+                                    while (gerenciarReceitas) {
+                                        System.out.println("\n--- GERENCIAR RECEITAS ---");
+                                        System.out.println("1. Adicionar Receita");
+                                        System.out.println("2. Ver Todas as Receitas");
+                                        System.out.println("3. Ver Receitas por Mês");
+                                        System.out.println("4. Ver Receitas por Tipo");
+                                        System.out.println("0. Voltar");
+                                        System.out.print("Escolha uma opção: ");
+                                        String opcaoReceita = scanner.nextLine();
+
+                                        switch (opcaoReceita) {
+                                            case "1":
+                                                System.out.print("Valor (R$): ");
+                                                double valorReceita = Double.parseDouble(scanner.nextLine());
+                                                System.out.print("Fonte (ex: empresa, corretora): ");
+                                                String fonte = scanner.nextLine();
+                                                System.out.print("Descrição: ");
+                                                String descricao = scanner.nextLine();
+                                                System.out.print("Tipo (ex: salário, dividendos): ");
+                                                String tipo = scanner.nextLine();
+                                                Recipe novaReceita = new Recipe(valorReceita, LocalDate.now(), fonte, descricao, tipo);
+                                                recipeService.addRecipe(novaReceita);
+                                                System.out.println("Receita adicionada com sucesso!");
+                                                break;
+                                            case "2":
+                                                for (Recipe r : recipeService.getAllRecipes()) {
+                                                    System.out.println(r);
+                                                }
+                                                break;
+                                            case "3":
+                                                System.out.print("Digite o mês (ex: JANUARY, FEBRUARY...): ");
+                                                Month mes = Month.valueOf(scanner.nextLine().toUpperCase());
+                                                for (Recipe r : recipeService.getRecipesByMonth(mes)) {
+                                                    System.out.println(r);
+                                                }
+                                                break;
+                                            case "4":
+                                                System.out.print("Digite o tipo de receita: ");
+                                                String tipoFiltro = scanner.nextLine();
+                                                for (Recipe r : recipeService.getRecipesByType(tipoFiltro)) {
+                                                    System.out.println(r);
+                                                }
+                                                break;
+                                            case "0":
+                                                gerenciarReceitas = false;
                                                 break;
                                             default:
                                                 System.out.println("Opção inválida.");
