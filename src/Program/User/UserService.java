@@ -1,7 +1,6 @@
 package Program.User;
 
 import Entities.User;
-
 import java.util.HashMap;
 
 public class UserService {
@@ -32,7 +31,7 @@ public class UserService {
         User user = users.get(email);
         if (!user.getPassword().equals(password)) {
             System.out.println("Erro: Senha incorreta.");
-            return user;
+            return null;
         }
 
         System.out.println("Login realizado com sucesso! Bem-vindo, " + user.getName());

@@ -1,13 +1,14 @@
 package Program.app;
 
 import Entities.User;
-import Program.User.UserService;
 import Program.Expense.ExpenseService;
 import Program.Goal.GoalService;
 import Entities.FinancialGoal;
 import java.time.LocalDate;
 import Entities.Recipe;
 import Program.Recipe.RecipeService;
+import Program.User.UserService;
+
 import java.time.Month;
 import java.util.List;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        UserService userService = new UserService();
+        var userService = new UserService();
 
         while (true) {
             System.out.println("\n--- MENU PRINCIPAL ---");
