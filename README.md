@@ -49,3 +49,9 @@ Youtube: https://youtu.be/7_SExlvO56o?si=-420oTLP1l8XBJ_u
 ## Screencast (testes)
 -- https://youtu.be/TIFoNCdr5j4 --
 
+## Autores
+
+- Arllesson Gomes
+- Hugo Ponciano
+- Larissa Lima
+- Lucas Bezerra
