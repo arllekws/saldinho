@@ -11,7 +11,7 @@ public class Conexao {
     private static final String USUARIO = "postgres";
     private static final String SENHA = "kinho123";
 
-    public static Connection conectar() throws SQLException {
+    public static Connection conectar() throws  SQLException {
         return DriverManager.getConnection(URL, USUARIO, SENHA);
     }
 }

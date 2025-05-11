@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class UserService {
 
-    public void registerUser(String name, String email, @org.jetbrains.annotations.NotNull String password) {
-        if (password.length() <= 8) {
+    public void registerUser(String name, String email,  String password) {
+        if (password.length() <= 5) {
             System.out.println("Erro: A senha deve ter mais que 8 caracteres.");
             return;
         }

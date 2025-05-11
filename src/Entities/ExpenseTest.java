@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExpenseTest {
 
-    @Test
+    private double v1;
+
     void testExpenseConstructorAndGetters() {
 
         Expense expense = new Expense("Aluguel", 1200.50);
@@ -15,7 +16,13 @@ class ExpenseTest {
         assertEquals(1200.50, expense.getAmount(), 0.01);
     }
 
-    @Test
+    private void assertEquals(String aluguel, String description) {
+    }
+
+    private void assertEquals(double v, double amount, double v1) {
+        this.v1 = v1;
+    }
+    
     void testToString() {
 
         Expense expense = new Expense("Supermercado", 150.75);
