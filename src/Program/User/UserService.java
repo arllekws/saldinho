@@ -61,7 +61,7 @@ public class UserService {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao fazer login: " + e.getMessage());
+            System.out.printf("Erro ao fazer login: %s%n", e.getMessage());
             return null;
         }
     }
