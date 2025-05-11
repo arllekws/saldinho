@@ -28,4 +28,10 @@ public class ExpenseService {
         expenses.clear();
         System.out.println("Todas as despesas foram apagadas.");
     }
+
+    // ✅ Método adicionado para permitir testes
+    public List<Expense> getAllExpenses() {
+        return new ArrayList<>(expenses);
+    }
 }
+
