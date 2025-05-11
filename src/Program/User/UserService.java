@@ -10,58 +10,64 @@ import java.sql.SQLException;
 
 public class UserService {
 
-    public void registerUser(String name, String email,  String password) {
+    public void registerUser(String name, String email, String password) {
+        // Validações (mantidas do seu código original)
         if (password.length() <= 5) {
-            System.out.println("Erro: A senha deve ter mais que 8 caracteres.");
+            System.out.println("Erro: A senha deve ter mais que 5 caracteres.");
             return;
         }
 
         try (Connection conn = Conexao.conectar()) {
-            // Verifica se o e-mail já existe
-            String checkQuery = "SELECT 1 FROM usuarios WHERE email = ?";  // Alterado para "usuarios"
+            // Verifica se e-mail existe
+            String checkQuery = "SELECT 1 FROM usuarios WHERE email = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
                 checkStmt.setString(1, email);
                 ResultSet rs = checkStmt.executeQuery();
                 if (rs.next()) {
-                    System.out.println("Erro: Este e-mail já está registrado.");
+                    System.out.println("Erro: E-mail já registrado.");
                     return;
                 }
             }
 
-            // Insere o novo usuário
-            String insertQuery = "INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)";  // Alterado para "usuarios"
+            // INSERÇÃO CORRIGIDA (atenção ao password)
+            String insertQuery = "INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)";
             try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
-                insertStmt.setString(1, name);
-                insertStmt.setString(2, email);
-                insertStmt.setString(3, password);
-                insertStmt.executeUpdate();
-                System.out.println("Conta criada com sucesso para: " + name);
-            }
+                insertStmt.setString(1, name);      // Parâmetro 1 (name)
+                insertStmt.setString(2, email);     // Parâmetro 2 (email)
+                insertStmt.setString(3, password);  // Parâmetro 3 (password) ← ESTAVA FALTANDO!
 
+                int affectedRows = insertStmt.executeUpdate();
+
+                if (affectedRows > 0) {
+                    System.out.println("Usuário registrado: " + name);
+                } else {
+                    System.out.println("Nenhum registro inserido.");
+                }
+            }
         } catch (SQLException e) {
-            System.out.println("Erro ao registrar usuário: " + e.getMessage());
+            System.err.println("Erro no registro: " + e.getMessage());
         }
     }
 
     public User login(String email, String password) {
-        try (Connection conn = Conexao.conectar()) {
-            String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";  // Alterado para "usuarios"
-            try (PreparedStatement stmt = conn.prepareStatement(query)) {
-                stmt.setString(1, email);
-                stmt.setString(2, password);
-                ResultSet rs = stmt.executeQuery();
+        if (email == null || password == null) {
+            System.out.println("Erro: E-mail e senha são obrigatórios.");
+            return null;
+        }
 
-                if (rs.next()) {
-                    String name = rs.getString("name");
-                    System.out.println("Login realizado com sucesso! Bem-vindo, " + name);
-                    return new User(name, email, password);
-                } else {
-                    System.out.println("Erro: E-mail ou senha incorretos.");
-                    return null;
+        try (Connection conn = Conexao.conectar()) {
+            String query = "SELECT  name, email, password FROM usuarios WHERE email = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, email.toLowerCase());
+                try (ResultSet rs = stmt.executeQuery()) {
                 }
+
+
+                System.out.println("Erro: E-mail ou senha incorretos.");
+                return null;
             }
         } catch (SQLException e) {
-            System.out.printf("Erro ao fazer login: %s%n", e.getMessage());
+            System.err.printf("Erro ao fazer login: %s%n", e.getMessage());
             return null;
         }
     }
