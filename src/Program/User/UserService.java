@@ -11,14 +11,12 @@ import java.sql.SQLException;
 public class UserService {
 
     public void registerUser(String name, String email, String password) {
-        // Validações (mantidas do seu código original)
         if (password.length() <= 5) {
             System.out.println("Erro: A senha deve ter mais que 5 caracteres.");
             return;
         }
 
         try (Connection conn = Conexao.conectar()) {
-            // Verifica se e-mail existe
             String checkQuery = "SELECT 1 FROM usuarios WHERE email = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
                 checkStmt.setString(1, email);
@@ -29,12 +27,11 @@ public class UserService {
                 }
             }
 
-            // INSERÇÃO CORRIGIDA (atenção ao password)
             String insertQuery = "INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)";
             try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
-                insertStmt.setString(1, name);      // Parâmetro 1 (name)
-                insertStmt.setString(2, email);     // Parâmetro 2 (email)
-                insertStmt.setString(3, password);  // Parâmetro 3 (password) ← ESTAVA FALTANDO!
+                insertStmt.setString(1, name);
+                insertStmt.setString(2, email);
+                insertStmt.setString(3, password);
 
                 int affectedRows = insertStmt.executeUpdate();
 
@@ -56,15 +53,24 @@ public class UserService {
         }
 
         try (Connection conn = Conexao.conectar()) {
-            String query = "SELECT  name, email, password FROM usuarios WHERE email = ?";
+            String query = "SELECT name, email, password FROM usuarios WHERE email = ?";
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setString(1, email.toLowerCase());
-                try (ResultSet rs = stmt.executeQuery()) {
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    String storedPassword = rs.getString("password");
+                    if (storedPassword.equals(password)) {
+                        String name = rs.getString("name");
+                        return new User(name, email, password);
+                    } else {
+                        System.out.println("Erro: Senha incorreta.");
+                        return null;
+                    }
+                } else {
+                    System.out.println("Erro: E-mail não encontrado.");
+                    return null;
                 }
-
-
-                System.out.println("Erro: E-mail ou senha incorretos.");
-                return null;
             }
         } catch (SQLException e) {
             System.err.printf("Erro ao fazer login: %s%n", e.getMessage());

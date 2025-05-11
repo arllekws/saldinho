@@ -14,7 +14,7 @@ public class Conexao {
 
         String url = "jdbc:postgresql://localhost:5432/banco_saldinho";
         String user = "postgres"; // substitua pelo seu usuário
-        String password = "kinho123"; // substitua pela sua senha
+        String password = "***"; // substitua pela sua senha
 
         return DriverManager.getConnection(url, user, password);
     }
