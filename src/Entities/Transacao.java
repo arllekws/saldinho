@@ -1,3 +1,4 @@
+package Entities;
 
 public class Transacao {
     private String descricao;
