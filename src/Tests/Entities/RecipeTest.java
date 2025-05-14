@@ -1,5 +1,6 @@
-package Entities;
+package Tests.Entities;
 
+import Entities.Recipe;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

@@ -1,6 +1,7 @@
-package Program.Recipe;
+package Tests.Program;
 
 import Entities.Recipe;
+import Program.Recipe.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

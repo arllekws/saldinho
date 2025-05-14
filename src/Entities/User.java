@@ -4,6 +4,7 @@ public class User {
     private final String name;
     private final String email;
     private final String password;
+    private double monthlyExpenseLimit = 0.0;
 
     public User(String name, String email, String password) {
         this.name = name;
@@ -21,5 +22,11 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public double getMonthlyExpenseLimit() { return this.monthlyExpenseLimit; }
+
+    public void setMonthlyExpenseLimit(double limit) {
+        this.monthlyExpenseLimit = limit;
     }
 }

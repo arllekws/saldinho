@@ -1,6 +1,7 @@
-package Program.User;
+package Tests.Program;
 
 import Entities.User;
+import Program.User.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,6 @@
-package Entities;
+package Tests.Entities;
 
+import Entities.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

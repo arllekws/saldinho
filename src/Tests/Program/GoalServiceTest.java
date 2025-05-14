@@ -1,6 +1,7 @@
-package Program.Goal;
+package Tests.Program;
 
 import Entities.FinancialGoal;
+import Program.Goal.GoalService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

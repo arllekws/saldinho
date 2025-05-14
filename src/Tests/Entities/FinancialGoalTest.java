@@ -1,5 +1,6 @@
-package Entities;
+package Tests.Entities;
 
+import Entities.FinancialGoal;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

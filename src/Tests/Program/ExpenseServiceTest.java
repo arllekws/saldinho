@@ -1,6 +1,7 @@
-package Program.Expense;
+package Tests.Program;
 
 import Entities.Expense;
+import Program.Expense.ExpenseService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

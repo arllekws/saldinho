@@ -3,6 +3,8 @@ package Program.Expense;
 import Entities.Expense;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class ExpenseService {
     private final List<Expense> expenses = new ArrayList<>();
@@ -29,7 +31,17 @@ public class ExpenseService {
         System.out.println("Todas as despesas foram apagadas.");
     }
 
-    // ✅ Método adicionado para permitir testes
+    public double getTotalExpensesByMonth(Month month) {
+        double total = 0.0;
+        for (Expense e : expenses) {
+            if (e.getDate().getMonth().equals(month)) {
+                total += e.getAmount();
+            }
+        }
+        return total;
+    }
+
+    // Método adicionado para permitir testes
     public List<Expense> getAllExpenses() {
         return new ArrayList<>(expenses);
     }

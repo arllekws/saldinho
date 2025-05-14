@@ -43,7 +43,6 @@ public class Main {
                     String loginSenha = scanner.nextLine().trim();
                     User usuarioLogado = userService.login(loginEmail, loginSenha);
 
-
                     if (usuarioLogado != null) {
                         clearScreen();
                         ExpenseService expenseService = new ExpenseService();
@@ -58,7 +57,8 @@ public class Main {
                             System.out.println("3. Apagar Todas as Despesas");
                             System.out.println("4. Metas Financeiras");
                             System.out.println("5. Visualizar Investimentos");
-                            System.out.println("0. Sair da Conta");
+                            System.out.print("6. Definir limite de gastos mensais");
+                            System.out.println("\n0. Sair da Conta");
                             System.out.print("Escolha uma opção: ");
                             String escolha = scanner.nextLine();
 
@@ -69,6 +69,14 @@ public class Main {
                                     System.out.print("Valor: ");
                                     double valor = Double.parseDouble(scanner.nextLine());
                                     expenseService.addExpense(desc, valor);
+
+                                    double totalGastos = expenseService.getTotalExpensesByMonth(LocalDate.now().getMonth());
+                                    double limiteUsuario = usuarioLogado.getMonthlyExpenseLimit();
+                                    if (limiteUsuario > 0 && totalGastos > limiteUsuario) {
+                                        System.out.println("Atenção! Você ultrapassou seu limite mensal de R$" + limiteUsuario);
+                                        System.out.printf("Total gasto neste mês: R$%.2f\n", totalGastos);
+                                        System.out.printf("Excesso: R$%.2f\n", totalGastos - limiteUsuario);
+                                    }
                                     break;
                                 case "2":
                                     expenseService.listExpenses();
@@ -202,6 +210,12 @@ public class Main {
                                                 System.out.println("Opção inválida.");
                                         }
                                     }
+                                    break;
+                                case "6":
+                                    System.out.print("Digite o limite de gastos mensais (R$): ");
+                                    double limite = Double.parseDouble(scanner.nextLine());
+                                    usuarioLogado.setMonthlyExpenseLimit(limite);
+                                    System.out.println("Limite definido com sucesso!");
                                     break;
                                 case "0":
                                     logado = false;
