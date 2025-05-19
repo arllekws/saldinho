@@ -5,6 +5,7 @@ public class User {
     private final String email;
     private final String password;
     private double monthlyExpenseLimit = 0.0;
+    private boolean emergencyMode;
 
     public User(String name, String email, String password) {
         this.name = name;
@@ -29,4 +30,13 @@ public class User {
     public void setMonthlyExpenseLimit(double limit) {
         this.monthlyExpenseLimit = limit;
     }
+
+    public boolean isEmergencyMode() {
+        return isEmergencyMode();
+    }
+
+    public void setEmergencyMode(boolean emergencyMode) {
+        this.emergencyMode = emergencyMode;
+    }
+
 }

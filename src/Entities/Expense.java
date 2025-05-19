@@ -3,14 +3,25 @@ package Entities;
 import java.time.LocalDate;
 
 public class Expense {
-    private final String description;
-    private final double amount;
+    private String description;
+    private double amount;
     private LocalDate date;
+    private ExpenseCategory category;
 
+    // Construtor com data atual
     public Expense(String description, double amount) {
         this.description = description;
         this.amount = amount;
         this.date = LocalDate.now();
+        this.category = category;
+    }
+
+    // Construtor com data manual
+    public Expense(String description, double amount, LocalDate date) {
+        this.description = description;
+        this.amount = amount;
+        this.date = date;
+        this.category = category;
     }
 
     public String getDescription() {
@@ -21,11 +32,22 @@ public class Expense {
         return amount;
     }
 
-    public LocalDate getDate() { return this.date; }
-
+    public LocalDate getDate() {
+        return date;
+    }
 
     @Override
     public String toString() {
-        return description + " - R$" + amount;
+        return description + " - R$ " + amount + " (" + date + ")";
+    }
+
+
+    public ExpenseCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ExpenseCategory category) {
+        this.category = category;
     }
 }
+
