@@ -24,6 +24,13 @@ public class Expense {
         this.category = category;
     }
 
+    public Expense(String description, double amount, LocalDate date, ExpenseCategory category) {
+        this.description = description;
+        this.amount = amount;
+        this.date = date;
+        this.category = category;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -39,15 +46,6 @@ public class Expense {
     @Override
     public String toString() {
         return description + " - R$ " + amount + " (" + date + ")";
-    }
-
-
-    public ExpenseCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(ExpenseCategory category) {
-        this.category = category;
     }
 }
 

@@ -22,7 +22,6 @@ public class ExpenseDAO {
             stmt.setDate(3, Date.valueOf(expense.getDate()));
 
             stmt.executeUpdate();
-            System.out.println("Despesa salva no banco com sucesso!");
 
         } catch (SQLException e) {
             System.out.println("Erro ao salvar a despesa: " + e.getMessage());

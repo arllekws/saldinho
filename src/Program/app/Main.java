@@ -1,6 +1,8 @@
 package Program.app;
 
+import Entities.ExpenseCategory;
 import Entities.User;
+import Program.Expense.ExpenseClassifier;
 import Program.Expense.ExpenseService;
 import Program.Goal.GoalService;
 import Entities.FinancialGoal;
@@ -57,8 +59,8 @@ public class Main {
                             System.out.println("3. Apagar Todas as Despesas");
                             System.out.println("4. Metas Financeiras");
                             System.out.println("5. Visualizar Investimentos");
-                            System.out.print("6. Definir limite de gastos mensais");
-                            System.out.println("\n0. Sair da Conta");
+                            System.out.println("6. Definir limite de gastos mensais");
+                            System.out.println("0. Sair da Conta");
                             System.out.print("Escolha uma opção: ");
                             String escolha = scanner.nextLine();
 
@@ -68,7 +70,22 @@ public class Main {
                                     String desc = scanner.nextLine();
                                     System.out.print("Valor: ");
                                     double valor = Double.parseDouble(scanner.nextLine());
-                                    expenseService.addExpense(desc, valor);
+
+
+                                    ExpenseCategory categoria = ExpenseClassifier.classifyExpense(desc);
+                                    System.out.println("Categoria: " + categoria);
+
+                                    if (usuarioLogado.isEmergencyMode() && categoria == ExpenseCategory.NON_ESSENTIAL) {
+                                        System.out.println("🚨 Modo de Emergência ativo!");
+                                        System.out.println("A despesa '" + desc + "' foi considerada NÃO ESSENCIAL e não pode ser registrada.");
+                                        break;
+                                    }
+
+                                    if (usuarioLogado.isEmergencyMode() && categoria == ExpenseCategory.ESSENTIAL) {
+                                        System.out.println("✅ A despesa foi considerada ESSENCIAL e será registrada.");
+                                    }
+
+                                    expenseService.addExpense(desc, valor, categoria); // Supondo que addExpense aceite categoria
 
                                     double totalGastos = expenseService.getTotalExpensesByMonth(LocalDate.now().getMonth());
                                     double limiteUsuario = usuarioLogado.getMonthlyExpenseLimit();
@@ -76,6 +93,11 @@ public class Main {
                                         System.out.println("Atenção! Você ultrapassou seu limite mensal de R$" + limiteUsuario);
                                         System.out.printf("Total gasto neste mês: R$%.2f\n", totalGastos);
                                         System.out.printf("Excesso: R$%.2f\n", totalGastos - limiteUsuario);
+
+                                        if (!usuarioLogado.isEmergencyMode()) {
+                                            usuarioLogado.setEmergencyMode(true);
+                                            System.out.println("🚨 Seu modo de emergência foi ATIVADO automaticamente!");
+                                        }
                                     }
                                     break;
                                 case "2":
@@ -241,5 +263,3 @@ public class Main {
         System.out.flush();
     }
 }
-
-

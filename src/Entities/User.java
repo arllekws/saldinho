@@ -32,7 +32,12 @@ public class User {
     }
 
     public boolean isEmergencyMode() {
-        return isEmergencyMode();
+        // Example: Auto-enable emergency mode if expenses exceed limits
+        // You would need to track current month's expenses elsewhere
+        return this.emergencyMode; // or some calculated condition
+    }
+    public void toggleEmergencyMode() {
+        this.emergencyMode = !this.emergencyMode;
     }
 
     public void setEmergencyMode(boolean emergencyMode) {

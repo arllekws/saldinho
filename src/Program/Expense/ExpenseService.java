@@ -2,7 +2,6 @@ package Program.Expense;
 
 import Entities.Expense;
 import Entities.ExpenseCategory;
-import Entities.User;
 import Program.dao.ExpenseDAO;
 
 import java.time.Month;
@@ -13,7 +12,7 @@ public class ExpenseService {
     private final List<Expense> expenses = new ArrayList<>();
     private final ExpenseDAO expenseDAO = new ExpenseDAO();
 
-    public void addExpense(String description, double amount) {
+    public void addExpense(String description, double amount, ExpenseCategory categoria) {
         Expense expense = new Expense(description, amount);
         expenses.add(expense);
         expenseDAO.saveExpense(expense); // Salva no banco
@@ -65,18 +64,11 @@ public class ExpenseService {
         return total;
     }
 
-    public String addExpense(User user, Expense expense) {
-        if (user.isEmergencyMode() && expense.getCategory() == ExpenseCategory.NON_ESSENTIAL) {
-            return "🚫 Despesa bloqueada: modo de emergência ativado. Evite gastos não essenciais.";
-        }
 
-        // Aqui você chama o DAO para salvar a despesa normalmente
-        // expenseDAO.save(expense); // exemplo
-        return "✅ Despesa registrada com sucesso.";
-    }
-
-    // Método auxiliar para testes ou integração
     public List<Expense> getAllExpenses() {
         return new ArrayList<>(expenses);
     }
+
+
+
 }
