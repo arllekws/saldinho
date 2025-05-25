@@ -31,8 +31,8 @@ public class ExpenseService {
         }
     }
 
-    public void listExpensesFromDatabase() {
-        List<Expense> savedExpenses = expenseDAO.getAllExpenses();
+    public void listExpensesFromDatabase(int userID) {
+        List<Expense> savedExpenses = expenseDAO.getExpensesByUserId(userID);
 
         if (savedExpenses.isEmpty()) {
             System.out.println("Nenhuma despesa encontrada no banco.");

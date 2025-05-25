@@ -7,6 +7,7 @@ public class Expense {
     private double amount;
     private LocalDate date;
     private ExpenseCategory category;
+    private int userID;
 
     // Construtor com data atual
     public Expense(String description, double amount) {
@@ -17,18 +18,21 @@ public class Expense {
     }
 
     // Construtor com data manual
-    public Expense(String description, double amount, LocalDate date) {
+    public Expense(String description, double amount, LocalDate date, int userID) {
         this.description = description;
         this.amount = amount;
         this.date = date;
         this.category = category;
+        this.userID = userID;
     }
 
-    public Expense(String description, double amount, LocalDate date, ExpenseCategory category) {
+
+    public Expense(String description, double amount, LocalDate date, ExpenseCategory category, int userID) {
         this.description = description;
         this.amount = amount;
         this.date = date;
         this.category = category;
+        this.userID = userID;
     }
 
     public String getDescription() {
@@ -41,6 +45,15 @@ public class Expense {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public int setUserID(int userID) {
+        this.userID = userID;
+        return userID;
     }
 
     @Override
