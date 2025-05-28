@@ -38,9 +38,7 @@ https://github.com/user-attachments/assets/96ba5326-635c-4a22-a5bb-572c0b3c92be
 
 ## Diagrama de Classes (UML)
 
-https://miro.com/app/board/uXjVIGd3n2U=/?share_link_id=781119355264
-
-Print: ![image](https://github.com/user-attachments/assets/42178d9f-8e2b-45ee-acb3-a7759b50ad3f)
+Link: [[https://miro.com/app/board/uXjVIGd3n2U=/?share_link_id=7811193552642](https://miro.com/welcomeonboard/SHRZZHI0Q2NaVHlZRGl6Uk5oYmZ3Z3U2aEFDckVZTmNoSTJHVDlSeXRkYzE3SlpGRVU0eGlhWUJ3c2Q2UDcrU1BkMEkrN09tREN6bTUvZU1CMTgvNlNSaWlRVXFZUUJ4UTA2bHkzNWR0YTNQWEZXN3NUUGdKMjAvaEVueGZ5a2pNakdSWkpBejJWRjJhRnhhb1UwcS9BPT0hdjE=?share_link_id=2535877530)](https://miro.com/app/board/uXjVIGd3n2U=/?share_link_id=86255488522)
 
 ## Screencast Atualizado Entrega 4
 https://youtu.be/AUBiklQgU-I
