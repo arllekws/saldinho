@@ -34,6 +34,7 @@ https://github.com/user-attachments/assets/96ba5326-635c-4a22-a5bb-572c0b3c92be
 <h3>Link Youtube: (Com legenda) </h3> https://youtu.be/vVsdVC9SJyE
 
 ## Issue/ Bug tracker
+![Image](https://github.com/user-attachments/assets/15274589-db0d-4d02-92fe-33123f5d8b8f)
 
 ## Diagrama de Classes (UML)
 
