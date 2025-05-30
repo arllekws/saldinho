@@ -47,6 +47,9 @@ Youtube:
 ## Screencast (testes)
 -- https://youtu.be/TIFoNCdr5j4 --
 
+## Documentação
+-- https://docs.google.com/document/d/1-KB5lolgK4WHfn6ZC3mnFf7t6lqFizqdmHyT3dejjz0/edit?usp=sharing --
+
 ## Autores
 
 - Arllesson Gomes
