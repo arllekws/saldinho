@@ -47,6 +47,9 @@ Youtube:
 ## Screencast (testes)
 -- https://youtu.be/TIFoNCdr5j4 --
 
+## Screencast (testes) da entrega 4 de POO
+-- https://youtu.be/OWb8GdCjgG0 --
+
 ## Documentação
 -- https://docs.google.com/document/d/1-KB5lolgK4WHfn6ZC3mnFf7t6lqFizqdmHyT3dejjz0/edit?usp=sharing --
 
